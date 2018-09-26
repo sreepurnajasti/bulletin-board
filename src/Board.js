@@ -6,33 +6,13 @@ class Board extends Component{
   constructor(props){
     super(props)
     this.state = {
-      notes: [
-        // {
-        //   id: 0,
-        //   note: "Call lisa"
-        // },{
-        //   id: 1,
-        //   note: "call dev"
-        // },{
-        //   id: 2,
-        //   note: "email ashok"
-        // }
-      ]
+      notes: []
     }
     this.eachNote = this.eachNote.bind(this)
     this.update = this.update.bind(this)
     this.remove = this.remove.bind(this)
     this.add = this.add.bind(this)
     this.nextId = this.nextId.bind(this)
-  }
-  componentWillMount(){
-    var self = this
-    if(this.props.count){
-      fetch(`https://baconipsum.com/api?type=all-meat&sentences=${this.props.count}`, {
-        crossDomain:true})
-        .then(response => response.json())
-        .then(json => json[0].split('. ').forEach(sentence => self.add(sentence.substring(0,25))))
-    }
   }
   nextId(){
     this.uniqueId = this.uniqueId || 0
